@@ -6,6 +6,26 @@
   align-items: center;
 }
 
+/* Mobile-first: search fills row 1, date-filter + button share row 2 */
+app-search-input {
+  flex: 0 0 100%;
+}
+
+app-date-filter {
+  flex: 1;
+}
+
+/* Desktop: single row — search grows, date-filter stays fixed */
+@media (min-width: 540px) {
+  app-search-input {
+    flex: 1 1 0;
+  }
+
+  app-date-filter {
+    flex: 0 0 auto;
+  }
+}
+
 /* Refresh button — icon-btn lives in theme-toggle, replicated here for the refresh button */
 .icon-btn {
   background: var(--card);

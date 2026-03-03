@@ -25,6 +25,7 @@ select {
   outline: none;
   cursor: pointer;
   transition: border-color 0.2s;
+  width: 100%;
   min-width: 155px;
 }
 
