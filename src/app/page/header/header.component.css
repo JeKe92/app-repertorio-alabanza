@@ -1,6 +1,13 @@
 header {
   padding: 48px 0 32px;
   text-align: center;
+  position: relative;
+}
+
+app-theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 0;
 }
 
 .logo {

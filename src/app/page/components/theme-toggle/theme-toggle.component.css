@@ -1,0 +1,22 @@
+.icon-btn {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  width: 42px;
+  color: var(--text3);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn span {
+  pointer-events: none;
+}
+
+.icon-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}

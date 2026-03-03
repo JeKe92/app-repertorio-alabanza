@@ -1,12 +1,9 @@
-<div *ngIf="song" class="song-card" style="animation-delay:(i*0.03)s">
+<div *ngIf="song" class="song-card">
     <div class="song-name">{{ song.songName }}</div>
     <div class="meta-row">
         <div *ngIf="song.keyA"> <span class="meta-label"><b>Ton. </b></span><span class="tone-chip">{{ song.keyA }}</span></div>
         <div *ngIf="song.keyB"> <span class="meta-label"><b>Alt. </b></span><span class="tone-alt">{{ song.keyB }}</span></div>
         <div *ngIf="song.leadVocal"> <span class="meta-label"><b>Voz principal: </b></span><span class="main-voice">{{ song.leadVocal }}</span></div>
     </div>
-    <div class="actions">
-        <a *ngIf="song.chordsOrLyrics" class="btn btn-acordes" [href]="song.chordsOrLyrics" target="_blank" rel="noopener">Acordes</a>
-        <a *ngIf="song.youtube" class="btn btn-yt" [href]="song.youtube" target="_blank" rel="noopener">YouTube</a>
-    </div>
+    <app-song-actions [chordsUrl]="song.chordsOrLyrics" [youtubeUrl]="song.youtube"></app-song-actions>
 </div>

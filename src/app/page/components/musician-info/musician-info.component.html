@@ -1,0 +1,21 @@
+<div class="musicians">
+    <span class="musicians-item" *ngIf="song.drums as drums">
+        <span class="instr"><b>Batería: </b></span><span class="musician">{{ drums }}</span>
+    </span>
+    <span class="musicians-item" *ngIf="song.piano as piano">
+        <span class="instr"><b>Piano: </b></span><span class="musician">{{ piano }}</span>
+    </span>
+    <span class="musicians-item" *ngIf="song.acousticGuitar as acousticGuitar">
+        <span class="instr"><b>Guitarra Acústica: </b></span><span class="musician">{{ acousticGuitar }}</span>
+    </span>
+    <span class="musicians-item" *ngIf="song.electricGuitar as electricGuitar">
+        <span class="instr"><b>Guitarra Eléctrica: </b></span><span class="musician">{{ electricGuitar }}</span>
+    </span>
+    <span class="musicians-item" *ngIf="song.bass as bass">
+        <span class="instr"><b>Bajo: </b></span><span class="musician">{{ bass }}</span>
+    </span>
+    <span class="musicians-item vocals" *ngIf="song.voices as voices">
+        <span class="instr"><b>Voces: </b></span>
+        <span class="musician" *ngFor="let voice of voices.split(',')">{{ voice }}</span>
+    </span>
+</div>

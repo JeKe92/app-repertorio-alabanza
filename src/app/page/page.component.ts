@@ -7,6 +7,7 @@ import { ScheduledSong } from '../models/song.model';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../services/data.service';
 import { SongCardGroupComponent } from "./components/song-card-group/song-card-group.component";
+import { filterSongs, getDateOptions, countWithChords, countWithVideo } from '../utils/song.utils';
 
 @Component({
   selector: 'app-page',
@@ -29,22 +30,20 @@ export class PageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const data = this.route.snapshot.data as any;
     if (data && data.songs) {
-      // initialize cache and filters with snapshot data
       this.onRefresh(data.songs);
     }
-    this.routeSub = this.route
-      .data.subscribe({
-        next: (data) => {
-          if (data?.['songs']?.length > 0) {
-            this.onRefresh(data['songs']);
-          } else {
-            this.songs = [];
-            this.allSongs = [];
-            this.updateDateOptions();
-            this.dataLoaded = true;
-          }
+    this.routeSub = this.route.data.subscribe({
+      next: (data) => {
+        if (data?.['songs']?.length > 0) {
+          this.onRefresh(data['songs']);
+        } else {
+          this.songs = [];
+          this.allSongs = [];
+          this.dateOptions = [];
+          this.dataLoaded = true;
         }
-      });
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -54,7 +53,7 @@ export class PageComponent implements OnInit, OnDestroy {
   onRefresh(songs: ScheduledSong[]): void {
     this.dataLoaded = false;
     this.allSongs = songs || [];
-    this.updateDateOptions();
+    this.dateOptions = getDateOptions(this.allSongs, d => this.dataService.formatDateSpanish(d));
     this.applyFilters();
     this.dataLoaded = true;
   }
@@ -70,46 +69,19 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   private applyFilters(): void {
-    let filtered = this.allSongs;
-    if (this.searchTerm) {
-      const t = this.searchTerm.toLowerCase();
-      filtered = filtered.filter(s =>
-        (s.songName ?? '').toString().toLowerCase().includes(t)
-      );
-    }
-    if (this.dateTerm) {
-      // dateTerm is already formatted Spanish label
-      filtered = filtered.filter(s => {
-        const songDate: any = s.date;
-        const formatted = songDate ? this.dataService.formatDateSpanish(songDate) : '';
-        return formatted === this.dateTerm;
-      });
-    }
-    this.songs = filtered;
-  }
-
-  private updateDateOptions(): void {
-    const set = new Set<string>();
-    this.allSongs.forEach(s => {
-      const dateObj = s.date;
-      if (dateObj) {
-        set.add(this.dataService.formatDateSpanish(dateObj));
-      }
-    });
-    // Sort dates chronologically
-    this.dateOptions = Array.from(set).sort((a, b) => {
-      const dateA = this.dataService.parseDate(a); // parse back from formatted string
-      const dateB = this.dataService.parseDate(b);
-      if (!dateA || !dateB) return 0;
-      return dateA.getTime() - dateB.getTime();
-    });
+    this.songs = filterSongs(
+      this.allSongs,
+      this.searchTerm,
+      this.dateTerm,
+      d => this.dataService.formatDateSpanish(d)
+    );
   }
 
   getSongsWithChords(): number {
-    return this.songs.filter(s => s.chordsOrLyrics).length;
+    return countWithChords(this.songs);
   }
 
   getSongsWithVideo(): number {
-    return this.songs.filter(s => s.youtube).length;
+    return countWithVideo(this.songs);
   }
 }

@@ -1,16 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScheduledSong } from '../../../models/song.model';
+import { SongActionsComponent } from '../song-actions/song-actions.component';
 
 @Component({
   selector: 'app-song-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SongActionsComponent],
   templateUrl: './song-card.component.html',
   styleUrl: './song-card.component.css'
 })
 export class SongCardComponent {
-
   @Input() song: ScheduledSong | null = null;
-
 }

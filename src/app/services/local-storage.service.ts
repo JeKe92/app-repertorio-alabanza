@@ -7,20 +7,23 @@ export class LocalStorageService {
 
   constructor() { }
 
-  
+  get(key: string): string {
+    try { return window.localStorage.getItem(key) || ''; } catch { return ''; }
+  }
+
+  set(key: string, value: string): void {
+    try { window.localStorage.setItem(key, value); } catch { /* ignore */ }
+  }
+
+  remove(key: string): void {
+    try { window.localStorage.removeItem(key); } catch { /* ignore */ }
+  }
+
   getLocalStorageGroup(): string {
-    try {
-      return window.localStorage.getItem('grupo_alabanza') || '';
-    } catch (e) {
-      return '';
-    }
+    return this.get('grupo_alabanza');
   }
 
   getLocalStorageTheme(): string {
-    try {
-      return window.localStorage.getItem('repertorio_theme') || '';
-    } catch (e) {
-      return '';
-    }
+    return this.get('repertorio_theme');
   }
 }

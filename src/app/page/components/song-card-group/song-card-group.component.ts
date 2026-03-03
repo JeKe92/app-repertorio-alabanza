@@ -3,6 +3,7 @@ import { SongCardComponent } from '../song-card/song-card.component';
 import { CommonModule } from '@angular/common';
 import { ScheduledSong } from '../../../models/song.model';
 import { DataService } from '../../../services/data.service';
+import { MusicianInfoComponent } from '../musician-info/musician-info.component';
 
 interface SongGroup {
   label: string;
@@ -12,7 +13,7 @@ interface SongGroup {
 @Component({
   selector: 'app-song-card-group',
   standalone: true,
-  imports: [SongCardComponent, CommonModule],
+  imports: [SongCardComponent, CommonModule, MusicianInfoComponent],
   templateUrl: './song-card-group.component.html',
   styleUrl: './song-card-group.component.css'
 })
@@ -20,9 +21,7 @@ export class SongCardGroupComponent implements OnChanges {
   @Input() songs: ScheduledSong[] = [];
   songsByDate: SongGroup[] = [];
 
-  constructor(
-    private dataService: DataService
-  ) {}
+  constructor(private dataService: DataService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['songs']) {
@@ -30,12 +29,9 @@ export class SongCardGroupComponent implements OnChanges {
     }
   }
 
-  /**
-   * Group songs by their date (dateText) with Spanish formatting
-   */
   private groupSongs(songs: ScheduledSong[]): SongGroup[] {
     const map = new Map<string, ScheduledSong[]>();
-    const dateMap = new Map<string, Date>(); // Store parsed dates for sorting
+    const dateMap = new Map<string, Date>();
 
     songs.forEach(song => {
       const dateObj = song.date;
@@ -47,7 +43,6 @@ export class SongCardGroupComponent implements OnChanges {
       map.get(key)!.push(song);
     });
 
-    // Convert to array and sort by date
     const groups: SongGroup[] = Array.from(map.entries()).map(([dateLabel, list]) => ({
       label: dateLabel,
       list
@@ -57,7 +52,7 @@ export class SongCardGroupComponent implements OnChanges {
       const dateA = dateMap.get(a.label);
       const dateB = dateMap.get(b.label);
       if (!dateA || !dateB) return 0;
-      return dateA.getTime() - dateB.getTime(); // Descending order (newest first)
+      return dateA.getTime() - dateB.getTime();
     });
 
     return groups;

@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { GROUP_LINKS, GROUPS } from '../../constants/groups';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../services/data.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-choose-place',
@@ -16,20 +17,21 @@ export class ChoosePlaceComponent {
   readonly GROUPS = GROUPS;
   value = '';
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private localStorageService: LocalStorageService
+  ) {}
 
   onPlaceChange(event: Event): void {
-    const select = event.target as HTMLSelectElement;
-    const value = select.value;
-    if (value) {
-      window.localStorage.setItem('grupo_alabanza', value);
-      this.dataService.setSpreadsheet(GROUP_LINKS[value].link, GROUP_LINKS[value].sheet);
+    this.value = (event.target as HTMLSelectElement).value;
+    if (this.value) {
+      this.localStorageService.set('grupo_alabanza', this.value);
     }
-    this.value = value;
   }
 
   onAccept(): void {
     if (this.value) {
+      this.dataService.setSpreadsheet(GROUP_LINKS[this.value].link, GROUP_LINKS[this.value].sheet);
       this.router.navigate(['/repertorio']);
     }
   }

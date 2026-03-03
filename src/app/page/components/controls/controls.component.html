@@ -1,22 +1,11 @@
 <div class="group-selected">
-    <span>{{getGroup()}}</span>
-    <a class="change-group" href="/elegir-grupo">Cambiar grupo</a>
+    <span>{{groupName}}</span>
+    <a class="change-group" [routerLink]="['/elegir-grupo']">Cambiar grupo</a>
 </div>
 <div class="controls">
-    <div class="search-wrap">
-        <span class="material-icons search-icon" aria-hidden="true">search</span>
-        <input type="search" id="search" placeholder="Buscar canción..." (input)="filterBySongName($event)">
-    </div>
-    <div class="sel-wrap">
-        <select id="fdate" (change)="filterByDate($event)">
-            <option value="">Todas las fechas</option>
-            <option *ngFor="let d of dateOptions" [value]="d">{{d}}</option>
-        </select>
-    </div>
-        <button class="icon-btn" (click)="load()" title="Actualizar"><span class="material-icons"
-            aria-hidden="true">refresh</span></button>
-    <!-- Theme toggle -->
-    <button id="theme-toggle" class="icon-btn" title="Cambiar tema">
-        <span class="material-icons" id="theme-icon">light_mode</span>
+    <app-search-input (searchChange)="searchChange.emit($event)"></app-search-input>
+    <app-date-filter [dateOptions]="dateOptions" (dateChange)="dateChange.emit($event)"></app-date-filter>
+    <button class="icon-btn" (click)="load()" title="Actualizar">
+        <span class="material-icons" aria-hidden="true">refresh</span>
     </button>
 </div>

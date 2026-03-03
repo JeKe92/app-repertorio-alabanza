@@ -1,0 +1,44 @@
+.musicians {
+  margin: 6px 0 12px;
+  color: var(--text2);
+  font-size: 0.92rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.musicians .musicians-item {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.musicians .instr {
+  color: var(--text3);
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+
+.musicians .musician {
+  background: rgba(91, 141, 238, 0.12);
+  color: var(--accent);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.musicians .musicians-item.vocals {
+  white-space: normal;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.musicians .musicians-item.vocals .musician {
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
