@@ -19,6 +19,7 @@ import { DateFilterComponent } from '../date-filter/date-filter.component';
 export class ControlsComponent implements OnInit {
 
   @Output() refresh = new EventEmitter<ScheduledSong[]>();
+  @Output() loadStart = new EventEmitter<void>();
   @Output() searchChange = new EventEmitter<string>();
   @Output() dateChange = new EventEmitter<string>();
   @Input() dateOptions: string[] = [];
@@ -42,6 +43,7 @@ export class ControlsComponent implements OnInit {
   }
 
   load(): void {
+    this.loadStart.emit();
     this.dataService.loadData().pipe(take(1)).subscribe({
       next: songs => this.refresh.emit(songs as ScheduledSong[]),
       error: err => {

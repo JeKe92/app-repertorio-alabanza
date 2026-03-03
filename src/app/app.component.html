@@ -1,5 +1,9 @@
 <div class="wrap">
   <app-header></app-header>
+  <div *ngIf="isNavigating" class="nav-loading">
+    <div class="spinner"></div>
+    <p>Cargando canciones...</p>
+  </div>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>

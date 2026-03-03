@@ -51,7 +51,6 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   onRefresh(songs: ScheduledSong[]): void {
-    this.dataLoaded = false;
     this.allSongs = songs || [];
     this.dateOptions = getDateOptions(this.allSongs, d => this.dataService.formatDateSpanish(d));
     this.applyFilters();

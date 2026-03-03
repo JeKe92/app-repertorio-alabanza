@@ -1,5 +1,6 @@
 <app-controls
   [dateOptions]="dateOptions"
+  (loadStart)="dataLoaded = false"
   (refresh)="onRefresh($event)"
   (searchChange)="onSearch($event)"
   (dateChange)="onDate($event)">

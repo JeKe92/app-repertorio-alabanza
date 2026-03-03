@@ -4,3 +4,23 @@
   padding: 0 16px;
   position: relative;
 }
+
+.nav-loading {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text3);
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 2.5px solid var(--border2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto 14px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
