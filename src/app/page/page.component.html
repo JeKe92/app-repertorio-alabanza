@@ -12,5 +12,5 @@
 <div id="main">
   <div *ngIf="!dataLoaded" class="loading"><div class="spinner"></div><p>Cargando canciones...</p></div>
   <div *ngIf="dataLoaded && songs.length === 0" class="empty">🎵<br><br>No hay canciones que coincidan</div>
-  <app-song-card-group [songs]="songs"></app-song-card-group>
+  <app-song-card-group *ngIf="dataLoaded" [songs]="songs"></app-song-card-group>
 </div>
