@@ -1,0 +1,10 @@
+<div class="date-group" *ngFor="let group of songsByDate">
+    <div class="date-header">
+        <span class="date-badge"> {{ group.label }} </span>
+        <span class="date-count"> {{ group.list.length }} canciones</span>
+        <div class="hline"></div>
+    </div>
+    <div class="song-list">
+        <app-song-card *ngFor="let song of group.list" [song]="song"></app-song-card>
+    </div>
+</div>

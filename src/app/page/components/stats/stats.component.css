@@ -1,0 +1,20 @@
+.stats {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 11px;
+  font-size: 0.75rem;
+  color: var(--text3);
+}
+
+.chip b {
+  color: var(--text);
+  font-weight: 600;
+}

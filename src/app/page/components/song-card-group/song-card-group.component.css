@@ -1,0 +1,40 @@
+
+.date-group {
+  margin-bottom: 30px;
+}
+
+.date-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 10px 0 6px;
+  z-index: 20;
+}
+
+.date-badge {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: rgba(251,191,36,0.1);
+  border: 1px solid rgba(251,191,36,0.25);
+  border-radius: 20px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+
+.date-count {
+  font-size: 0.72rem;
+  color: var(--text3);
+  white-space: nowrap;
+}
+
+.hline {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}

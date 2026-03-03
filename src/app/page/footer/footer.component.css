@@ -1,0 +1,7 @@
+footer {
+  text-align: center;
+  margin-top: 48px;
+  color: var(--text3);
+  font-size: 0.72rem;
+  opacity: 0.5;
+}
