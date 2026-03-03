@@ -4,6 +4,14 @@
         <span class="date-count"> {{ group.list.length }} canciones</span>
         <div class="hline"></div>
     </div>
+    <div class="musicians">
+        <span class="musicians-item" *ngIf="group.list[0]?.drums as drums"> <span class="instr"><b>Batería: </b></span><span class="musician">{{ drums }}</span></span>
+        <span class="musicians-item" *ngIf="group.list[0]?.piano as piano"> <span class="instr"><b>Piano: </b></span><span class="musician">{{ piano }}</span></span>
+        <span class="musicians-item" *ngIf="group.list[0]?.acousticGuitar as acousticGuitar"> <span class="instr"><b>Guitarra Acústica: </b></span><span class="musician">{{ acousticGuitar }}</span></span>
+        <span class="musicians-item" *ngIf="group.list[0]?.electricGuitar as electricGuitar"> <span class="instr"><b>Guitarra Eléctrica: </b></span><span class="musician">{{ electricGuitar }}</span></span>
+        <span class="musicians-item" *ngIf="group.list[0]?.bass as bass"> <span class="instr"><b>Bajo: </b></span><span class="musician">{{ bass }}</span></span>
+        <span class="musicians-item vocals" *ngIf="group.list[0]?.voices as voices"> <span class="instr"><b>Voces: </b></span><span class="musician" *ngFor="let voice of voices.split(',')">{{ voice }}</span></span>
+    </div>
     <div class="song-list">
         <app-song-card *ngFor="let song of group.list" [song]="song"></app-song-card>
     </div>
