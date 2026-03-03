@@ -3,5 +3,15 @@ import { PageComponent } from './page/page.component';
 import { SheetResolver } from './services/sheet-resolver.service';
 
 export const routes: Routes = [
-  { path: 'repertorio', component: PageComponent, resolve: { songs: SheetResolver }, data: { sheet: 'ProgMes' } }
+  {
+    path: 'repertorio',
+    component: PageComponent,
+    resolve: { songs: SheetResolver },
+    data: { sheet: 'ProgMes' }
+  },
+  {
+    path: '',
+    redirectTo: '/repertorio',
+    pathMatch: 'full'
+  }
 ];
