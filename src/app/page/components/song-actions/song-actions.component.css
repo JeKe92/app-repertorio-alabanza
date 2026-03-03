@@ -26,19 +26,19 @@
 }
 
 .btn-acordes:hover {
-  background: var(--accent);
+  background: #0b7d92;  /* solid fill — white text 4.81:1 in both themes */
   color: #fff;
-  border-color: var(--accent);
+  border-color: #0b7d92;
 }
 
 .btn-yt {
-  background: rgba(248,113,113,0.1);
-  color: #fca5a5;
-  border-color: rgba(248,113,113,0.25);
+  background: var(--yt-bg);
+  color: var(--yt-color);
+  border-color: var(--yt-border);
 }
 
 .btn-yt:hover {
-  background: #ef4444;
+  background: #dc2626;  /* was #ef4444 — white text 4.83:1 vs 3.73:1 */
   color: #fff;
-  border-color: #ef4444;
+  border-color: #dc2626;
 }

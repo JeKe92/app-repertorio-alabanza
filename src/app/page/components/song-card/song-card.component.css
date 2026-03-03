@@ -61,7 +61,7 @@
 }
 
 .main-voice {
-  background: rgba(127, 255, 212,0.50);
+  background: rgba(105, 212, 173, 0.50);
   color: var(--text4);
   border: 1px solid var(--border2);
   border-radius: 7px;

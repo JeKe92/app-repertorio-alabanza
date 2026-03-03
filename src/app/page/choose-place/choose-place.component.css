@@ -46,16 +46,16 @@ select:focus {
 }
 
 .btn-primary {
-  background-color: var(--accent);
+  background-color: #0b7d92;  /* fixed — white text 4.81:1 in both themes */
   color: #fff;
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-glow);
+  background-color: #0a6b7d;
 }
 
 .btn-primary:disabled {
-  background-color: var(--accent);
+  background-color: #0b7d92;
   opacity: 0.6;
   cursor: not-allowed;
 }

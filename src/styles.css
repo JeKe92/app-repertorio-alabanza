@@ -5,13 +5,17 @@
   --card2: #1c1f2a;
   --border: #252836;
   --border2: #2e3247;
-  --accent: #5b8dee;
+  --accent: #23AEC3;
   --accent-glow: rgba(91,141,238,0.15);
   --gold: #fbbf24;
   --text: #eef0f6;
   --text2: #9ba3be;
-  --text3: #5c6480;
-  --text4: #99ffdf;  
+  --text3: #7d89a6;  /* was #5c6480 — 3.35:1 → 5.10:1 on dark bg */
+  --text4: #99ffdf;
+  /* YouTube button — dark theme */
+  --yt-color: #fca5a5;
+  --yt-bg: rgba(248, 113, 113, 0.1);
+  --yt-border: rgba(248, 113, 113, 0.25);
 }
 
 * {
@@ -98,13 +102,17 @@ body.light {
   --card2: #f3f6fb;
   --border: #e6eef9;
   --border2: #dbe6f5;
-  --accent: #2563eb;
-  --accent-glow: rgba(37,99,235,0.06);
+  --accent: #0b7d92;         /* was #23aec3 — 2.50:1 → 4.81:1 on white */
+  --accent-glow: rgba(11, 125, 146, 0.12);
   --gold: #b45309;
   --text: #0f172a;
   --text2: #475569;
   --text3: #6b7280;
-  --text4: #00b377;
+  --text4: #2A5545;
+  /* YouTube button — light theme */
+  --yt-color: #b91c1c;
+  --yt-bg: rgba(185, 28, 28, 0.1);
+  --yt-border: rgba(185, 28, 28, 0.25);
 }
 
 /* Force body background to use updated var in case of specificity issues */
