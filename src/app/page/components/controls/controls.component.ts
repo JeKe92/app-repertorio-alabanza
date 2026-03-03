@@ -1,8 +1,11 @@
-import { Component, Output, EventEmitter, Input, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, Input, HostListener, OnInit, inject } from '@angular/core';
 import { DataService } from '../../../services/data.service';
 import { ScheduledSong } from '../../../models/song.model';
 import { take } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { LocalStorageService } from '../../../services/local-storage.service';
+import { Router } from '@angular/router';
+import { GROUPS } from '../../../constants/groups';
 
 @Component({
   selector: 'app-controls',
@@ -11,13 +14,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './controls.component.html',
   styleUrl: './controls.component.css'
 })
-export class ControlsComponent {
+export class ControlsComponent implements OnInit {
 
   @Output() refresh = new EventEmitter<ScheduledSong[]>();
   @Output() searchChange = new EventEmitter<string>();
   @Output() dateChange = new EventEmitter<string>();
   @Input() dateOptions: string[] = [];
-  
+  private router = inject(Router);
   private readonly THEME_KEY = 'repertorio_theme';
   @HostListener('window:click', ['$event'])
   onThemeToggleClick(event: Event) {
@@ -26,11 +29,18 @@ export class ControlsComponent {
     }
   }
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private localStorageService: LocalStorageService
+  ) { }
+
+  ngOnInit(): void {
+    this.initTheme();
+  }
 
   initTheme() {
     let saved = null;
-    try { saved = localStorage.getItem(this.THEME_KEY); } catch (e) { /* ignore */ }
+    try { saved = this.localStorageService.getLocalStorageTheme(); } catch (e) { /* ignore */ }
     if (!saved) {
       saved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
     }
@@ -88,5 +98,14 @@ export class ControlsComponent {
   filterByDate(e: Event): void {
     const val = (e.target as HTMLSelectElement).value || '';
     this.dateChange.emit(val);
+  }
+
+  getGroup(): string {
+    const group =this.localStorageService.getLocalStorageGroup();
+    if (!group) {
+      this.router.navigate(['/elegir-grupo']);
+    }
+    const filteredGroupValue = GROUPS.filter(g => g[0] === group);
+    return filteredGroupValue.length > 0 ? filteredGroupValue[0][1] : '';
   }
 }

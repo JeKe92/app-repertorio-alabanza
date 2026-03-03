@@ -1,0 +1,61 @@
+.sel-wrap {
+  position: relative;
+}
+
+.sel-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3);
+  pointer-events: none;
+  font-size: 0.75rem;
+}
+
+select {
+  appearance: none;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 11px 32px 11px 13px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 100%;
+}
+
+select:focus {
+  border-color: var(--accent);
+}
+
+.btn {
+  display: block;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin: 20px auto;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-glow);
+}
+
+.btn-primary:disabled {
+  background-color: var(--accent);
+  opacity: 0.6;
+  cursor: not-allowed;
+}

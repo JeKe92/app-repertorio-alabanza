@@ -1,0 +1,8 @@
+<div class="sel-wrap">
+    <select id="choose-place" (change)="onPlaceChange($event)">
+      <option value="">Seleccione un grupo de alabanza</option>
+      <option *ngFor="let group of GROUPS" [value]="group[0]">{{group[1]}}</option>
+    </select>
+</div>
+
+<button class ="btn btn-primary" type="button" (click)="onAccept()" [disabled]="!this.value">Aceptar</button>

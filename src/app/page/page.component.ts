@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ControlsComponent } from "./components/controls/controls.component";
 import { StatsComponent } from "./components/stats/stats.component";
-import { SongCardComponent } from './components/song-card/song-card.component';
 import { ScheduledSong } from '../models/song.model';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../services/data.service';
