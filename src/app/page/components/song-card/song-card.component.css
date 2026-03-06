@@ -33,7 +33,7 @@
 .meta-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   margin-bottom: 12px;
   flex-wrap: wrap;
 }
