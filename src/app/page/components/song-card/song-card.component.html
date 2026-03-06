@@ -3,6 +3,7 @@
     <div class="meta-row">
         <div *ngIf="song.keyA"> <span class="meta-label"><b>Ton. </b></span><span class="tone-chip">{{ song.keyA }}</span></div>
         <div *ngIf="song.keyB"> <span class="meta-label"><b>Alt. </b></span><span class="tone-alt">{{ song.keyB }}</span></div>
+        <div *ngIf="song.tempo"> <span class="meta-label"><b>Tempo: </b></span><span class="tone-alt">{{ song.tempo }}</span></div>
         <div *ngIf="song.leadVocal"> <span class="meta-label"><b>Voz principal: </b></span><span class="main-voice">{{ song.leadVocal }}</span></div>
     </div>
     <app-song-actions [chordsUrl]="song.chordsOrLyrics" [youtubeUrl]="song.youtube"></app-song-actions>

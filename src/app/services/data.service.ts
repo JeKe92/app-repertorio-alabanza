@@ -100,6 +100,7 @@ export class DataService {
       'Guitarra Eléctrica': 'electricGuitar',
       'Mes': 'month',
       'Piano': 'piano',
+      'Tempo': 'tempo',
       'Tonalidad A': 'keyA',
       'Tonalidad B': 'keyB',
       'Voces': 'voices',

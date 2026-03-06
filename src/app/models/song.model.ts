@@ -15,6 +15,7 @@ export interface ScheduledSong {
   keyA?: string; // 'Tonalidad A'
   keyB?: string | null; // 'Tonalidad B'
 
+  tempo?: string; // 'Tempo'
   voices?: string; // 'Voces'
   leadVocal?: string; // 'Voz principal'
   youtube?: string; // 'Youtube'
