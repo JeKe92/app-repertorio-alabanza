@@ -19,7 +19,15 @@ export function filterSongs(
       return formatted === dateTerm;
     });
   }
-  return filtered;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return filtered.sort((a, b) => {
+    const aPast = a.date < today;
+    const bPast = b.date < today;
+    if (aPast !== bPast) return aPast ? 1 : -1;
+    return a.date.getTime() - b.date.getTime();
+  });
 }
 
 export function getDateOptions(

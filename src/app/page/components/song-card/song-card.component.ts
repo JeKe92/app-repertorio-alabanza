@@ -12,4 +12,11 @@ import { SongActionsComponent } from '../song-actions/song-actions.component';
 })
 export class SongCardComponent {
   @Input() song: ScheduledSong | null = null;
+
+  get isPast(): boolean {
+    if (!this.song?.date) return false;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return this.song.date < today;
+  }
 }

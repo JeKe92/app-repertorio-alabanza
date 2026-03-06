@@ -48,10 +48,16 @@ export class SongCardGroupComponent implements OnChanges {
       list
     }));
 
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     groups.sort((a, b) => {
       const dateA = dateMap.get(a.label);
       const dateB = dateMap.get(b.label);
       if (!dateA || !dateB) return 0;
+      const aPast = dateA < today;
+      const bPast = dateB < today;
+      if (aPast !== bPast) return aPast ? 1 : -1;
       return dateA.getTime() - dateB.getTime();
     });
 

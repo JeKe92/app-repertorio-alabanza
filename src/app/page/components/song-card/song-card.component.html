@@ -1,4 +1,4 @@
-<div *ngIf="song" class="song-card">
+<div *ngIf="song" class="song-card" [class.past]="isPast">
     <div class="song-name">{{ song.songName }}</div>
     <div class="meta-row">
         <div *ngIf="song.keyA"> <span class="meta-label"><b>Ton. </b></span><span class="tone-chip">{{ song.keyA }}</span></div>
