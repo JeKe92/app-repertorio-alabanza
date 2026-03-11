@@ -8,6 +8,7 @@ import { MusicianInfoComponent } from '../musician-info/musician-info.component'
 interface SongGroup {
   label: string;
   list: ScheduledSong[];
+  isPast: boolean;
 }
 
 @Component({
@@ -43,13 +44,13 @@ export class SongCardGroupComponent implements OnChanges {
       map.get(key)!.push(song);
     });
 
-    const groups: SongGroup[] = Array.from(map.entries()).map(([dateLabel, list]) => ({
-      label: dateLabel,
-      list
-    }));
-
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+
+    const groups: SongGroup[] = Array.from(map.entries()).map(([dateLabel, list]) => {
+      const date = dateMap.get(dateLabel);
+      return { label: dateLabel, list, isPast: date ? date < today : false };
+    });
 
     groups.sort((a, b) => {
       const dateA = dateMap.get(a.label);

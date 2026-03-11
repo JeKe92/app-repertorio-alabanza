@@ -13,13 +13,6 @@
   background: var(--card2);
 }
 
-.song-card.past {
-  opacity: 0.45;
-}
-
-.song-card.past:hover {
-  opacity: 0.65;
-}
 
 .song-name {
   font-family: 'Sora', sans-serif;

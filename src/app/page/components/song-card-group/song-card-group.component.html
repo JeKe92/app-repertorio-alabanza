@@ -1,4 +1,4 @@
-<div class="date-group" *ngFor="let group of songsByDate">
+<div class="date-group" *ngFor="let group of songsByDate" [class.past]="group.isPast">
     <div class="date-header">
         <span class="date-badge"> {{ group.label }} </span>
         <span class="date-count"> {{ group.list.length }} canciones</span>

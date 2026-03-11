@@ -2,6 +2,14 @@
   margin-bottom: 30px;
 }
 
+.date-group.past {
+  opacity: 0.45;
+}
+
+.date-group.past:hover {
+  opacity: 0.65;
+}
+
 .date-header {
   display: flex;
   align-items: center;
