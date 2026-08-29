@@ -14,6 +14,9 @@
     <span class="musicians-item" *ngIf="song.bass as bass">
         <span class="instr"><b>Bajo: </b></span><span class="musician">{{ bass }}</span>
     </span>
+        <span class="musicians-item" *ngIf="song.trumpet as trumpet">
+        <span class="instr"><b>Trompeta: </b></span><span class="musician">{{ trumpet }}</span>
+    </span>
     <span class="musicians-item vocals" *ngIf="song.voices as voices">
         <span class="instr"><b>Voces: </b></span>
         <span class="musician" *ngFor="let voice of voices.split(',')">{{ voice }}</span>

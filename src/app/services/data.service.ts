@@ -98,6 +98,7 @@ export class DataService {
       'FechaText': 'dateText',
       'Guitarra Acústica': 'acousticGuitar',
       'Guitarra Eléctrica': 'electricGuitar',
+      'Trompeta': 'trumpet',
       'Mes': 'month',
       'Piano': 'piano',
       'Tempo': 'tempo',

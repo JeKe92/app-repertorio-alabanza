@@ -4,6 +4,7 @@ export interface ScheduledSong {
   drums?: string; // 'Batería'
   songName?: string; // 'Coro'
   songText?: string; // 'CoroText'
+  trumpet?: string; // 'Trompeta'
 
   date: Date; // parsed from 'Fecha'
   dateText?: string; // 'FechaText'
