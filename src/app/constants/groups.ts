@@ -8,5 +8,5 @@ export const GROUPS: [string, string][] = [
 
 export const GROUP_LINKS: { [key: string]: { link: string, sheet: string } } = {
     'bosaPabloVi': { link: '1anYCamlSRFhbbQAJVATmPcaG-jajkqWJREAyd5y3ERU', sheet: 'ProgMes' },
-    'grupoNacional': { link: '1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u', sheet: 'ProgMes' }
+    'grupoNacional': { link: '1wChofDFUpm0ZjV1sqO4-WQm79-tSZpuu6_AotOrPUjY', sheet: 'ProgMes' }
 };
